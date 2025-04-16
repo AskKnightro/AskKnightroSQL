@@ -1,0 +1,90 @@
+Teacher
+Teacher ID (PK)
+Name
+Email
+Department
+Profile picture
+Password (encrypted)
+Bio
+
+Student
+Student ID (PK)
+Name
+Email
+Password (encrypted)
+Profile picture
+Year/Standing
+Major
+Grad Date
+School ID
+University/College
+
+
+Enrollment - JOIN TABLE
+Enrollment ID (PK)
+Student id (FK)
+Class id (FK)
+time_created (enrollment date)
+
+Class
+Class ID (PK)
+Course name
+Semester
+teacher_id (FK)
+Course description
+Shard ID
+Course material ID (FK)
+
+Course Material
+ID (PK)
+Name
+Vector ID
+
+Chat_Session
+Each full conversation thread between a Student and AI
+(e.g., a student opens AskKnightro, asks a few questions, and closes)
+
+
+session_id (PK)    (Unique session ID)
+student_id (FK)    (Who started the session)
+class_id (FK)    (which class this belongs to)
+start_time    (When session started)
+end_time    (When session ended)
+
+
+Chat_Message
+Every individual message, whether it's a student query or AI response
+
+message_id (PK)    (Unique message ID)
+session_id (FK)    (Links to Chat_Session)
+sender_type    (Enum: 'Student' or 'AI’)
+content    (Message content (query or response))
+timestamp    (When message was sent)
+
+
+
+Chat_Session
+Each full conversation thread between a Student and AI
+(e.g., a student opens AskKnightro, asks a few questions, and closes)
+
+
+session_id (PK)    (Unique session ID)
+student_id (FK)    (Who started the session)
+class_id (FK)    (which class this belongs to)
+start_time    (When session started)
+end_time    (When session ended)
+
+
+Chat_Message
+Every individual message, whether it's a student query or AI response
+
+message_id (PK)    (Unique message ID)
+session_id (FK)    (Links to Chat_Session)
+sender_type    (Enum: 'Student' or 'AI’)
+content    (Message content (query or response))
+timestamp    (When message was sent)
+query_id (FK)     (Link to Query if it's a query)
+response_id (FK)    (Link to AI_Response if it's an AI reply)
+
+
+Remove the chat table
